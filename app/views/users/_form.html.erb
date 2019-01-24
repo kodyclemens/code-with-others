@@ -1,0 +1,12 @@
+<%= form_tag('/sessions', method: 'POST') do %>
+  <%= label_tag "Username" %>
+  <%= text_field_tag "session[username]" %>
+  <br>
+  <%= label_tag "Password" %>
+  <%= password_field_tag "session[password]" %>
+  <br>
+  <%= label_tag "Confirm Password" %>
+  <%= password_field_tag "session[password_confirmation]" %>
+  <br>
+  <%= submit_tag 'Register' %>
+<% end %>
