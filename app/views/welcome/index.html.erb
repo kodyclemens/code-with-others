@@ -1,1 +1,7 @@
 <%= 'Welcome to the app' %>
+
+<% if !@user.nil? %>
+  <%= "Logged in as #{@user.username}"%>
+<% end %>
+
+<%= link_to 'Logout', logout_path, method: 'delete' %>

@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  validates :username, presence: true
+  has_secure_password
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true
 
-  has_secure_password
   has_many :user_teams
   has_many :teams, through: :user_teams
   has_many :user_technologies
