@@ -1,7 +1,6 @@
-<%= 'Welcome to the app' %>
-
+<%= render partial: "layouts/nav", locals: { user: @user } %>
 <% if !@user.nil? %>
-  <%= "Logged in as #{@user.username}"%>
+  <div class="container-fluid">
+    <%= "Logged in as #{@user.username}"%>
+  </div>
 <% end %>
-
-<%= link_to 'Logout', logout_path, method: 'delete' %>

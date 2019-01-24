@@ -1,6 +1,11 @@
+<%= render partial: "layouts/nav", locals: { user: @user } %>
 <h2>Log In</h2>
 <%= render partial: "layouts/errors" %>
 <%= render partial: "sessions/form" %>
 
 <h2>Log In with GitHub</h2>
 <%= link_to('Log in with GitHub!', '/auth/github') %>
+<br>
+<span style="font-size: 5em">
+  <i class="fab fa-github"></i>
+</span>
