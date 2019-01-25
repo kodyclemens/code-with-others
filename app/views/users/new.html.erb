@@ -1,4 +1,5 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
 <h2>Sign Up</h2>
-<%= render partial: "layouts/error" %>
+<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <%= render partial: "users/form" %>
