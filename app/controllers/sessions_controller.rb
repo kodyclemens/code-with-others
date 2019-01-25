@@ -4,16 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:session]
-      user = User.new(session_params)
-      if user.save
-        session[:user_id] = user.id
-        redirect_to root_path
-      else
-        flash[:errors] = user.errors.full_messages
-        render "users/new"
-      end
-    elsif params[:username]
+    if params[:username]
       @user = User.find_by(username: params[:username])
       if @user.nil?
         redirect_to login_path
