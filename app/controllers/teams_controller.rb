@@ -10,6 +10,10 @@ class TeamsController < ApplicationController
     @team = Team.new
   end
 
+  def show
+    @team = Team.find(params[:id])
+  end
+
   def create
     @team = Team.new(team_params)
     if @team.valid? && creator_id_match_user?
