@@ -1,0 +1,13 @@
+<%= render partial: "layouts/nav", locals: { user: @user } %>
+<h2>Teams</h2>
+<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/object_errors", locals: { object: @user } %>
+<%= link_to 'Create a New Team', new_team_path %>
+
+<% @teams.each do |t| %>
+  <h4><%= t.name %></h4>
+  <img src="<%= t.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
+  <p><%= t.avatar_url %></p>
+  <p><%= t.repo_url %></p>
+  <p><%= "Created by:  #{creator_name(t.creator_id)}" %></p>
+<% end %>
