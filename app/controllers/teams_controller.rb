@@ -14,9 +14,31 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def edit
+    @team = Team.find(params[:id])
+    if !creator_id_match_user?(@team.creator_id)
+      flash[:error] = "Only the creator can edit this team!"
+      redirect_to teams_path
+    end
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    if !creator_id_match_user?(@team.creator_id)
+      flash[:error] = "Only the creator can edit this team!"
+      redirect_to teams_path
+    elsif creator_id_match_user?(params[:team][:creator_id])
+      @team.update(team_params)
+      redirect_to team_path(@team)
+    else
+      flash[:error] = "Something went wrong!"
+      redirect_to teams_path
+    end
+  end
+
   def create
     @team = Team.new(team_params)
-    if @team.valid? && creator_id_match_user?
+    if @team.valid? && creator_id_match_user?(params[:team][:creator_id])
       @team.save
       redirect_to teams_path
     else
@@ -35,7 +57,7 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name, :avatar_url, :repo_url, :creator_id)
   end
 
-  def creator_id_match_user?
-    params[:team][:creator_id] == session[:user_id].to_s
+  def creator_id_match_user?(team_creator_id)
+    team_creator_id.to_s == session[:user_id].to_s
   end
 end

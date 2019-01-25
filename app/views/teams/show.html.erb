@@ -6,4 +6,5 @@
 <img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
 <p><%= @team.avatar_url %></p>
 <p><%= @team.repo_url %></p>
+<p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>

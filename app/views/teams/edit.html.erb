@@ -1,0 +1,5 @@
+<%= render partial: "layouts/nav", locals: { user: @user } %>
+<h2>Edit your team</h2>
+<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/object_errors", locals: { object: @user } %>
+<%= render partial: "teams/form", locals: { user: @user, team: @team } %>
