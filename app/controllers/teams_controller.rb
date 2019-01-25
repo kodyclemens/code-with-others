@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @comments = team_comments(@team)
   end
 
   def edit
@@ -61,5 +62,9 @@ class TeamsController < ApplicationController
 
   def creator_id_match_user?(team_creator_id)
     team_creator_id.to_s == session[:user_id].to_s
+  end
+
+  def team_comments(team)
+    Comment.where(team_id: @team.id)
   end
 end

@@ -8,3 +8,8 @@
 <p><%= @team.repo_url %></p>
 <p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
+
+<h4>Comments:</h4>
+<% @comments.each do |c| %>
+  <%= c.content %>
+<% end %>
