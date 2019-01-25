@@ -7,12 +7,14 @@ class SessionsController < ApplicationController
     if params[:username]
       @user = User.find_by(username: params[:username])
       if @user.nil?
+        flash[:error] = "Did you type everything in correctly?"
         redirect_to login_path
       else
         if @user.authenticate(params[:password])
           session[:user_id] = @user.id
           redirect_to root_path
         else
+          flash[:error] = "Invalid username/password"
           redirect_to login_path
         end
       end
