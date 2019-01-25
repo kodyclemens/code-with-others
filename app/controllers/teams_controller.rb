@@ -28,6 +28,7 @@ class TeamsController < ApplicationController
       flash[:error] = "Only the creator can edit this team!"
       redirect_to teams_path
     elsif creator_id_match_user?(params[:team][:creator_id])
+      params[:team][:avatar_url] = 'https://i.imgur.com/v3Avup2.png' if params[:team][:avatar_url].empty?
       @team.update(team_params)
       redirect_to team_path(@team)
     else
@@ -39,6 +40,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.valid? && creator_id_match_user?(params[:team][:creator_id])
+      @team.avatar_url = 'https://i.imgur.com/v3Avup2.png' if @team.avatar_url.empty?
       @team.save
       redirect_to teams_path
     else
