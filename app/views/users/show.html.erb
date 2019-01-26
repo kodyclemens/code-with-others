@@ -10,4 +10,13 @@
 <p><%= "Company: #{@user.company}" if !@user.company.nil? %></p>
 <p><%= "Bio: #{@user.bio}" if !@user.bio.nil? %></p>
 <p><%= link_to 'GitHub Profile', @user.github_profile_url if !@user.bio.nil? %></p>
+<h4>Your technologies:</h4>
+<% @user.user_technologies.each do |t| %>
+  <p>
+    <%= "#{grab_technology_name(t.technology_id)}"%> - <%= "Skill level: #{t.skill_level}" %>
+  </p>
+<% end %>
+<br>
+<br>
 <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+<p><%= link_to 'Edit your skillset', user_technologies_path(@user) %></p>

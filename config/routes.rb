@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   get '/auth/github/callback', to: 'sessions#create'
   get '/signup', to: 'users#new', as: 'signup'
+  get '/users/:id/technologies', to: 'user_technologies#new', as: 'user_technologies'
+  post '/users/:id/technologies', to: 'user_technologies#create'
+
+
   delete '/logout', to: 'sessions#destroy'
   resources :sessions, only: [:create]
   resources :users, except: [:new]
