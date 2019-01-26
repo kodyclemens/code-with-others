@@ -15,6 +15,9 @@ class UserTechnologiesController < ApplicationController
       technology = Technology.find_or_create_by(params[:user_technology][:technologies][:name])
       UserTechnology.create(user_id: @user.id, technology_id: technology.id, skill_level: params[:user_technology][:skill_level])
       redirect_to user_path(@user)
+    else
+      flash[:error] = 'You must select or create a technology.'
+      redirect_to user_technologies_path
     end
   end
 

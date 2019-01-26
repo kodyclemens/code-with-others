@@ -11,6 +11,7 @@
 <p><%= "Bio: #{@user.bio}" if !@user.bio.nil? %></p>
 <p><%= link_to 'GitHub Profile', @user.github_profile_url if !@user.bio.nil? %></p>
 <h4>Your technologies:</h4>
+<p><%= link_to 'Add a technology to your profile', user_technologies_path(@user) %></p>
 <% @user.user_technologies.each do |t| %>
   <p>
     <%= "#{grab_technology_name(t.technology_id)}"%> - <%= "Skill level: #{t.skill_level}" %>
