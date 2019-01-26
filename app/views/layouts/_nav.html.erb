@@ -25,7 +25,7 @@
     <% if logged_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <%= link_to 'Profile', root_path, class: 'nav-link' %>
+          <%= link_to 'Profile', user_path(@user), class: 'nav-link' %>
         </li>
         <li class="nav-item active">
           <%= link_to 'Logout', logout_path, method: 'DELETE', class: 'nav-link' %>
