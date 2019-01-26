@@ -3,11 +3,19 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def new
-    @user = User.new
+    if session[:user_id].nil?
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
