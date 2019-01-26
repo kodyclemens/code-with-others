@@ -1,1 +1,12 @@
-User page
+<%= render partial: "layouts/nav", locals: { user: @user } %>
+<h2>Welcome, <%= @user.username %></h2>
+<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/object_errors", locals: { object: @user } %>
+
+<img src="<%= @user.avatar_url %>" alt="User Logo" class="img-fluid" style="max-width: 8%; height: auto;">
+<p>Username: <%= @user.username %></p>
+<p>Email: <%= @user.email %></p>
+<p><%= "Name: #{@user.real_name}" if !@user.real_name.nil? %></p>
+<p><%= "Company: #{@user.company}" if !@user.company.nil? %></p>
+<p><%= "Bio: #{@user.bio}" if !@user.bio.nil? %></p>
+<p><%= link_to 'GitHub Profile', @user.github_profile_url if !@user.bio.nil? %></p>
