@@ -1,0 +1,5 @@
+<%= render partial: "layouts/nav", locals: { user: @user } %>
+<h2>Create a New Comment</h2>
+<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/object_errors", locals: { object: @comment } %>
+<%= render partial: "comments/form", locals: { user: @user, comment: @comment } %>

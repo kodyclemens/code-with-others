@@ -1,0 +1,6 @@
+<h4><%= "Comments for #{@team.name}" %></h4>
+<% @comments.each do |c| %>
+  <p><%= c.content %>
+  <br>
+  <%= "Posted by: #{username(c.user_id)} on #{formatted_datetime(c.created_at)}"%><p>
+<% end %>

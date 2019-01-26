@@ -11,6 +11,7 @@
 
 <h4>Comments:</h4>
 <% @comments.each do |c| %>
+  <br>
   <%= c.content %>
   <br>
   <%= "Posted by: #{username(c.user_id)} on #{formatted_datetime(c.created_at)}"%>
