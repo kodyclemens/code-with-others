@@ -10,3 +10,4 @@
 <p><%= "Company: #{@user.company}" if !@user.company.nil? %></p>
 <p><%= "Bio: #{@user.bio}" if !@user.bio.nil? %></p>
 <p><%= link_to 'GitHub Profile', @user.github_profile_url if !@user.bio.nil? %></p>
+<p><%= link_to 'Edit profile', edit_user_path(@user) %></p>

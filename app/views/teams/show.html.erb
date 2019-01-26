@@ -10,6 +10,7 @@
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
 
 <h4>Comments:</h4>
+<p><%= link_to 'Add a comment', new_team_comment_path(@team) %></p>
 <% @comments.each do |c| %>
   <br>
   <%= c.content %>
