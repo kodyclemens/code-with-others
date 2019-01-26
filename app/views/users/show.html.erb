@@ -17,6 +17,12 @@
     <%= "#{grab_technology_name(t.technology_id)}"%> - <%= "Skill level: #{t.skill_level}" %> <%= link_to 'Delete', user_technology_path(technology_id: t.id), method: :delete %>
   </p>
 <% end %>
+<h4>Your Teams:</h4>
+<ul>
+  <% @user.teams.each do |t| %>
+    <li><%= link_to t.name, team_path(t) %></li>
+  <% end %>
+</ul>
 <br>
 <br>
 <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>

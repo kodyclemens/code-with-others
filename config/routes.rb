@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   delete '/teams/:id/technologies', to: 'team_technologies#destroy', as: 'team_technology'
 
   resources :sessions, only: [:create]
-  resources :users, except: [:new]
+
+  resources :users, except: [:new] do
+    resources :user_teams, only: [:create, :destroy], as: 'team'
+  end
 
   resources :teams do
     resources :comments

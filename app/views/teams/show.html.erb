@@ -13,8 +13,14 @@
       <li><%= t.name %> - <%= link_to 'Delete', team_technology_path(technology_id: t.id), method: :delete %></li>
     <% end %>
   </ul>
-<p><%= link_to 'Edit this team', edit_team_path(@team) %></pp>
+<p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
+<p><%= link_to 'Join this team!', user_team_index_path(user_id: @user.id, team_id: @team.id), method: :post %></p>
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
+<h4>Team Members:</h4>
+<% @team.users.each do |u| %>
+  <%= link_to u.username, user_path(u) %>
+<% end %>
+<br>
 
 <h4>Comments:</h4>
 <p><%= link_to 'Add a comment', new_team_comment_path(@team) %></p>

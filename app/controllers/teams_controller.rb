@@ -43,6 +43,7 @@ class TeamsController < ApplicationController
     if @team.valid? && creator_id_match_user?(params[:team][:creator_id])
       @team.avatar_url = 'https://i.imgur.com/v3Avup2.png' if @team.avatar_url.empty?
       @team.save
+      UserTeam.create(team_id: @team.id, user_id: @user.id)
       redirect_to teams_path
     else
       flash[:error] = 'Unsuccessfully created, please try again.'
