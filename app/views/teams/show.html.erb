@@ -6,7 +6,14 @@
 <img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
 <p><%= @team.avatar_url %></p>
 <p><%= @team.repo_url %></p>
-<p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
+<h4>Technologies used on this team:</h4>
+  <p><%= link_to 'Add a technology', team_technologies_path %></p>
+  <ul>
+    <% @team.technologies.each do |t| %>
+      <li><%= t.name %> - <%= link_to 'Delete', team_technology_path(technology_id: t.id), method: :delete %></li>
+    <% end %>
+  </ul>
+<p><%= link_to 'Edit this team', edit_team_path(@team) %></pp>
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
 
 <h4>Comments:</h4>

@@ -5,7 +5,7 @@ class UserTechnologiesController < ApplicationController
   def new
     @technology = UserTechnology.new
   end
-
+  
   def create
     if !params[:user_technology][:technology].empty?
       technology = Technology.find(params[:user_technology][:technology])
