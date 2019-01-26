@@ -14,7 +14,7 @@
 <p><%= link_to 'Add a technology to your profile', user_technologies_path(@user) %></p>
 <% @user.user_technologies.each do |t| %>
   <p>
-    <%= "#{grab_technology_name(t.technology_id)}"%> - <%= "Skill level: #{t.skill_level}" %>
+    <%= "#{grab_technology_name(t.technology_id)}"%> - <%= "Skill level: #{t.skill_level}" %> <%= link_to 'Delete', user_technologies_path(technology_id: t.id), method: :delete %>
   </p>
 <% end %>
 <br>

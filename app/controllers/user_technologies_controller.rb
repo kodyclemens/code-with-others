@@ -21,6 +21,17 @@ class UserTechnologiesController < ApplicationController
     end
   end
 
+  def destroy
+    technology = UserTechnology.find(params[:technology_id])
+    if technology.user_id == session[:user_id]
+      technology.destroy
+      redirect_to user_path(@user)
+    else
+      flash[:error] = 'Permission denied'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def user_technology_params
