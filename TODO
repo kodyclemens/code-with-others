@@ -2,4 +2,7 @@
 Todo List:
   ☐ Refactor views (DRY up repeated partials)
   ☐ Merge flash_errors and object_errors into one partial
-  ☐ Set default team image when URL not provided by user
+  ✔ Set default team image when URL not provided by user @done(19-01-26 15:33)
+  ☐ Allow users to join a team (create user_teams)
+  ☐ Team creator can remove user's from the team, individuals can remove themselves as well
+  ☐ Take a break and comment code
