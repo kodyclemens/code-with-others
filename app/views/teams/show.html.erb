@@ -18,7 +18,8 @@
 <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
 <h4>Team Members:</h4>
 <% @team.users.each do |u| %>
-  <%= link_to u.username, user_path(u) %>
+  <%= link_to u.username, user_path(u) %> - <%= link_to 'Remove user', user_team_path(user_id: u.id), method: :delete %>
+  <br>
 <% end %>
 <br>
 
