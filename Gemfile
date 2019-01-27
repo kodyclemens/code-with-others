@@ -30,6 +30,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'bootstrap'
 gem "recaptcha"
+gem "font-awesome-rails"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
