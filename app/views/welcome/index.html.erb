@@ -1,7 +1,6 @@
 <%= render partial: 'layouts/flash_error' %>
 <%= render partial: "layouts/nav", locals: { user: @user } %>
-<% if !@user.nil? %>
-  <div class="container-fluid">
-    <%= "Logged in as #{@user.username}"%>
-  </div>
+<br>
+<% if !@user %>
+  Index page
 <% end %>

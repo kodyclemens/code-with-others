@@ -1,9 +1,29 @@
-<%= form_tag('/sessions', method: 'POST') do %>
-  <%= label_tag "Username" %>
-  <%= text_field_tag "username" %>
-  <br>
-  <%= label_tag "Password" %>
-  <%= password_field_tag "password" %>
-  <br>
-  <%= submit_tag 'Log In' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-6">
+      <%= form_tag('/sessions', method: 'POST') do %>
+        <div class="form-group">
+          <%= label_tag "Username" %>
+          <%= text_field_tag "username", '', class: "form-control" %>
+          <br>
+          <%= label_tag "Password" %>
+          <%= password_field_tag "password", '', class: "form-control"  %>
+          <br>
+          <div class="text-center">
+            <%= submit_tag 'Log In', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-sm-6 hidden-xs col-lg-6">
+      <div class="form-group">
+        <div class="container text-center">
+          <img src="https://i.imgur.com/ZgHk0GP.png" alt="" style="width: 70%; height: auto;">
+          <br>
+          <%= link_to('Log in with GitHub!', '/auth/github') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
