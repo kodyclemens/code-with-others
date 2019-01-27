@@ -1,18 +1,18 @@
-<%= form_tag('/users', method: 'POST') do %>
-  <%= label_tag "Username" %>
-  <%= text_field_tag "user[username]" %>
-  <br>
-  <%= label_tag "Email" %>
-  <%= email_field_tag "user[email]" %>
-  <br>
-  <%= label_tag "Password" %>
-  <%= password_field_tag "user[password]" %>
-  <br>
-  <%= label_tag "Confirm Password" %>
-  <%= password_field_tag "user[password_confirmation]" %>
-  <%= hidden_field_tag "user[avatar_url]", 'https://i.imgur.com/WNQg4gn.png' %>
-  <br>
-  <%= recaptcha_tags %>
-  <br>
-  <%= submit_tag 'Register' %>
-<% end %>
+  <%= form_tag('/users', method: 'POST') do %>
+    <%= label_tag "Username" %>
+    <%= text_field_tag "user[username]" %>
+    <br>
+    <%= label_tag "Email" %>
+    <%= email_field_tag "user[email]" %>
+    <br>
+    <%= label_tag "Password" %>
+    <%= password_field_tag "user[password]" %>
+    <br>
+    <%= label_tag "Confirm Password" %>
+    <%= password_field_tag "user[password_confirmation]" %>
+    <%= hidden_field_tag "user[avatar_url]", 'https://i.imgur.com/WNQg4gn.png' %>
+    <br>
+    <%= recaptcha_tags %>
+    <br>
+    <%= submit_tag 'Register' %>
+  <% end %>
