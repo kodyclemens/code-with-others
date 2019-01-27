@@ -1,13 +1,25 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
-<h2>Teams</h2>
 <%= render partial: "layouts/flash_error" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
-<%= link_to 'Create a New Team', new_team_path %>
-
-<% @teams.each do |t| %>
-  <h4><%= link_to t.name, team_path(t) %></h4>
-  <img src="<%= t.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
-  <p><%= t.avatar_url %></p>
-  <p><%= t.repo_url %></p>
-  <p><%= "Created by:  #{creator_name(t.creator_id)}" %></p>
-<% end %>
+<div class="container mx-auto">
+<div class="text-center">
+  <h2><%= link_to 'Create a New Team', new_team_path %> <span class="badge badge-secondary"><i class="fas fa-plus"></i></span></h2>
+  </div>
+  <div class="row">
+    <% @teams.each do |t| %>
+      <div class="col-lg-3">
+        <div class="card" style="width: 18rem;">
+          <img src="<%= t.avatar_url %>" class="card-img-top" alt="...">
+          <figcaption class="figure-caption text-center">Created by: <%= link_to creator_name(t.creator_id), user_path(t.creator_id) %> (<%= t.updated_at.strftime('%b %d') %>)</figcaption>
+          <div class="card-body">
+            <h5 class="card-title"><%= t.name.titleize %></h5>
+            <p class="card-text"><strong>Description:</strong> <%= t.description %></p>
+            <p class="card-text"><strong>Goals:</strong> <%= t.goals %></p>
+            <p class="card-text"><strong>Slack:</strong> <%= t.communication_method %></p>
+            <a href="<%= team_path(t) %>" class="btn btn-primary">View Group</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

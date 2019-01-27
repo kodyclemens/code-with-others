@@ -62,7 +62,7 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :avatar_url, :repo_url, :creator_id)
+    params.require(:team).permit(:name, :avatar_url, :repo_url, :creator_id, :description, :goals, :communication_method)
   end
 
   def creator_id_match_user?(team_creator_id)

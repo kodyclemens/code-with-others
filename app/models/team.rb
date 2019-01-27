@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  default_scope { order(updated_at: :desc) }
   validates :name, presence: true
   validates :creator_id, presence: true
   has_many :user_teams
