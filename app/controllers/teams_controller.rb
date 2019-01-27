@@ -51,6 +51,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def most_comments
+    @team = Team.most_comments
+  end
+
   private
 
   def set_user

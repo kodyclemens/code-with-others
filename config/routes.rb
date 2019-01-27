@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
   get '/signup', to: 'users#new', as: 'signup'
   delete '/logout', to: 'sessions#destroy'
+  get '/teams/most_comments', to: 'teams#most_comments', as: 'most_comments'
 
   get '/users/:id/technologies/new', to: 'user_technologies#new', as: 'user_technologies'
   post '/users/:id/technologies/new', to: 'user_technologies#create'
