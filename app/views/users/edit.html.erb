@@ -1,31 +1,34 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
-<h2>Edit your profile</h2>
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <%= form_for(@user) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <br>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <br>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <br>
-  <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.text_field :password_confirmation %>
-  <br>
-  <%= f.label :real_name, 'Name' %>
-  <%= f.text_field :real_name %>
-  <br>
-  <%= f.label :company %>
-  <%= f.text_field :company %>
-  <br>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %>
-  <br>
-  <%= f.label :avatar_url %>
-  <%= f.text_field :avatar_url %>
-  <br>
-  <%= f.submit %>
+  <div class="container">
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control" %>
+      <br>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+      <br>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+      <br>
+      <%= f.label :password_confirmation, 'Confirm Password' %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <br>
+      <%= f.label :real_name, 'Name' %>
+      <%= f.text_field :real_name, class: "form-control" %>
+      <br>
+      <%= f.label :company %>
+      <%= f.text_field :company, class: "form-control" %>
+      <br>
+      <%= f.label :bio %>
+      <%= f.text_area :bio, class: "form-control" %>
+      <br>
+      <%= f.label :avatar_url %>
+      <%= f.text_field :avatar_url, class: "form-control" %>
+      <br>
+      <%= f.submit 'Update Profile', class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
