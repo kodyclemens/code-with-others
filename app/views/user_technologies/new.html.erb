@@ -1,6 +1,6 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
 <h2>Add a technology</h2>
-<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 
 <%= form_for(@technology) do |f| %>

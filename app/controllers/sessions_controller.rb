@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       else
         if @user.authenticate(params[:password])
           session[:user_id] = @user.id
+          flash[:message] = "Welcome, #{@user.username}"
           redirect_to root_path
         else
           flash[:error] = "Invalid username/password"
@@ -25,9 +26,11 @@ class SessionsController < ApplicationController
       if @user.nil?
         @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname], email: auth[:info][:email], avatar_url: auth[:info][:image], github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex, bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
         session[:user_id] = @user.id
+        flash[:message] = "Welcome, #{@user.username}"
         redirect_to root_path
       else
         session[:user_id] = @user.id
+        flash[:message] = "Welcome, #{@user.username}"
         redirect_to root_path
       end
     end

@@ -1,5 +1,5 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
 <h2>Create a New Team</h2>
-<%= render partial: "layouts/flash_error" %>
+<%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <%= render partial: "teams/form", locals: { user: @user, team: @team } %>
