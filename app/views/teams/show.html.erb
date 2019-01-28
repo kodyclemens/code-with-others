@@ -25,11 +25,18 @@
   <p><%= link_to 'Add a comment', new_team_comment_path(@team) %></p>
   <% @comments.each do |c| %>
     <div class="media">
-      <img src="<%= user_avatar_url(c.user_id) %>" class="align-self-start mr-3" alt="...">
-      <div class="media-body">
-        <p><%= c.content %></p>
-        <p><%= "Posted by: #{username(c.user_id)} on #{formatted_datetime(c.created_at)}"%></p>
-      </div>
+      <figure>
+        <img src="<%= user_avatar_url(c.user_id) %>" class="align-self-start mr-3" alt="...">
+        <br>
+        <span class="badge badge-dark"><%= username(c.user_id) %></span>
+        <% if user_id(c.user_id) == @team.creator_id %>
+          <span class="badge badge-creator">Creator</span>
+        <% end %>
+        <div class="media-body">
+          <p><%= c.content %></p>
+          <p class="figure-caption"><%= "Posted on #{formatted_datetime(c.created_at)}" %></p>
+        </div>
+      </figure>
     </div>
     <hr>
   <% end %>

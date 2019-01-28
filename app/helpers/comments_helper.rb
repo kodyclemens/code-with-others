@@ -4,6 +4,11 @@ module CommentsHelper
     user.username
   end
 
+  def user_id(id)
+    user = User.find(id)
+    user.id
+  end
+
   def formatted_datetime(date_timestamp)
     date_timestamp.strftime("%A, %B %e, %Y at %l:%M %p")
   end
