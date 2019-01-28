@@ -1,3 +1,5 @@
+![](https://img.shields.io/travis/kodyclemens/code-with-others.svg?style=flat-square) ![](https://img.shields.io/uptimerobot/status/m781850396-179efea977baf224c72dab0e.svg?style=flat-square)
+
 # Code With Others
 
 Code With Others is a web application that allows developers to create or join collaborative coding groups. Groups are project-focused and facilitate peer-to-peer learning.
