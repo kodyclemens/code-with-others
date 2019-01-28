@@ -1,32 +1,36 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
-<h2><%= @team.name %></h2>
-
-<img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
-<p><%= @team.repo_url %></p>
-<h4>Technologies used on this team:</h4>
+<div class="container">
+  <h2><%= @team.name %></h2>
+  <img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
+  <p><%= @team.repo_url %></p>
+  <h4>Technologies used on this team:</h4>
   <p><%= link_to 'Add a technology', team_technologies_path %></p>
   <ul>
     <% @team.technologies.each do |t| %>
       <li><%= t.name %> - <%= link_to 'Delete', team_technology_path(technology_id: t.id), method: :delete %></li>
     <% end %>
   </ul>
-<p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
-<p><%= link_to 'Join this team!', user_team_index_path(user_id: @user.id, team_id: @team.id), method: :post %></p>
-<p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
-<h4>Team Members:</h4>
-<% @team.users.each do |u| %>
-  <%= link_to u.username, user_path(u) %> - <%= link_to 'Remove user', user_team_path(user_id: u.id), method: :delete %>
+  <p><%= link_to 'Edit this team', edit_team_path(@team) %></p>
+  <p><%= link_to 'Join this team!', user_team_index_path(user_id: @user.id, team_id: @team.id), method: :post %></p>
+  <p><%= "Created by:  #{creator_name(@team.creator_id)}" %></p>
+  <h4>Team Members:</h4>
+  <% @team.users.each do |u| %>
+    <%= link_to u.username, user_path(u) %> - <%= link_to 'Remove user', user_team_path(user_id: u.id), method: :delete %>
+    <br>
+  <% end %>
   <br>
-<% end %>
-<br>
-
-<h4>Comments:</h4>
-<p><%= link_to 'Add a comment', new_team_comment_path(@team) %></p>
-<% @comments.each do |c| %>
-  <br>
-  <%= c.content %>
-  <br>
-  <%= "Posted by: #{username(c.user_id)} on #{formatted_datetime(c.created_at)}"%>
-<% end %>
+  <h4>Comments:</h4>
+  <p><%= link_to 'Add a comment', new_team_comment_path(@team) %></p>
+  <% @comments.each do |c| %>
+    <div class="media">
+      <img src="<%= user_avatar_url(c.user_id) %>" class="align-self-start mr-3" alt="...">
+      <div class="media-body">
+        <p><%= c.content %></p>
+        <p><%= "Posted by: #{username(c.user_id)} on #{formatted_datetime(c.created_at)}"%></p>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
