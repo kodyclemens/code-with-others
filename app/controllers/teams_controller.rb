@@ -1,24 +1,24 @@
 class TeamsController < ApplicationController
   before_action :require_login
   before_action :set_user
-  
+
   def index
     @teams = Team.all
   end
-  
+
   def new
     @team = Team.new
   end
 
   def show
     @team = Team.find(params[:id])
-    @comments = team_comments(@team)
+    @comments = team_comments
   end
 
   def edit
     @team = Team.find(params[:id])
-    if !creator_id_match_user?(@team.creator_id)
-      flash[:error] = "Only the creator can edit this team!"
+    unless creator_id_match_user?(@team.creator_id)
+      flash[:error] = 'Only the creator can edit this team!'
       redirect_to teams_path
     end
   end
@@ -26,14 +26,14 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if !creator_id_match_user?(@team.creator_id)
-      flash[:error] = "Only the creator can edit this team!"
+      flash[:error] = 'Only the creator can edit this team!'
       redirect_to teams_path
     elsif creator_id_match_user?(params[:team][:creator_id])
       params[:team][:avatar_url] = 'https://i.imgur.com/v3Avup2.png' if params[:team][:avatar_url].empty?
       @team.update(team_params)
       redirect_to team_path(@team)
     else
-      flash[:error] = "Something went wrong!"
+      flash[:error] = 'Something went wrong!'
       redirect_to teams_path
     end
   end
@@ -69,7 +69,7 @@ class TeamsController < ApplicationController
     team_creator_id.to_s == session[:user_id].to_s
   end
 
-  def team_comments(team)
+  def team_comments
     Comment.where(team_id: @team.id)
   end
 end

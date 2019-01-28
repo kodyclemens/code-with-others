@@ -7,9 +7,9 @@
   <h3 class="media-heading"><%= @user.username %><small> <%= @user.real_name if @user.real_name %></small></h3>
   <h6>
     <% @user.user_technologies.each do |t| %>
-      <%= "#{grab_technology_name(t.technology_id)}" %> <span class="badge badge-primary"><%= t.skill_level %></span>
+      <%= "#{grab_technology_name(t.technology_id)}" %> <span class="badge badge-primary"><%= t.skill_level %> </span> |
     <% end %>
-    | <%= link_to fa_icon('plus-circle'), user_technologies_path(@user) %>
+      <%= link_to fa_icon('plus-circle'), user_technologies_path(@user) %>
   </h6>
   <%= link_to 'Edit profile', edit_user_path(@user) %> <%= link_to fa_icon('user-circle'), edit_user_path(@user) %>
 </center>

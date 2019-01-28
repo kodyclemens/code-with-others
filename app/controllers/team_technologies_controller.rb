@@ -7,7 +7,7 @@ class TeamTechnologiesController < ApplicationController
     redirect_to root_path unless user_is_creator?(@team)
     @technology = TeamTechnology.new
   end
-  
+
   def create
     if !params[:team_technology][:technology].empty?
       technology = Technology.find(params[:team_technology][:technology])
@@ -22,7 +22,7 @@ class TeamTechnologiesController < ApplicationController
       redirect_to team_technologies_path
     end
   end
-  
+
   def destroy
     if user_is_creator?(@team)
       technology = TeamTechnology.where(team_id: @team.id, technology_id: params[:technology_id])
@@ -46,6 +46,6 @@ class TeamTechnologiesController < ApplicationController
   end
 
   def user_is_creator?(team)
-    team.creator_id.to_s == session[:user_id].to_s ? true : false
+    team.creator_id.to_s == session[:user_id].to_s
   end
 end

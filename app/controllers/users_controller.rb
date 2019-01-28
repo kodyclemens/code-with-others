@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:new, :create]
-  before_action :set_user, only: [:edit, :update]
+  before_action :require_login, except: %i[new create]
+  before_action :set_user, only: %i[edit update]
 
   def new
     if session[:user_id].nil?
@@ -19,9 +19,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if !user_authenticated?(params[:id])
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_authenticated?(params[:id])
   end
 
   def update
@@ -33,22 +31,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:user]
-      @user = User.new(user_params)
-      if verify_recaptcha(model: @user) && @user.valid? 
-        @user.save
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        render 'users/new'
-      end
+    @user = User.new(user_params) if params[:user]
+    if verify_recaptcha(model: @user) && @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      render 'users/new'
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :real_name, :email, :password, :password_confirmation, :github_uid, :github_profile_url, :company, :bio, :avatar_url, :communication_method)
+    params.require(:user).permit(:username, :real_name, :email, :password,
+                                 :password_confirmation, :github_uid,
+                                 :github_profile_url, :company,
+                                 :bio, :avatar_url, :communication_method)
   end
 
   def set_user
@@ -56,6 +55,6 @@ class UsersController < ApplicationController
   end
 
   def user_authenticated?(param_id)
-    param_id.to_s == session[:user_id].to_s ? true : false
+    param_id.to_s == session[:user_id].to_s
   end
 end

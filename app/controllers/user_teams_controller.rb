@@ -7,7 +7,7 @@ class UserTeamsController < ApplicationController
     if @userteam.valid?
       @userteam.save
     else
-      flash[:error] = "Something went wrong.."
+      flash[:error] = 'Something went wrong..'
     end
     redirect_to team_path(@userteam.team_id)
   end
@@ -17,9 +17,9 @@ class UserTeamsController < ApplicationController
     @team_member = User.find(params[:user_id])
     if user_authenticated?(@user.id) && @team.users.include?(@team_member)
       userteam = UserTeam.where(user_id: params[:user_id], team_id: @team.id)
-      userteam.each { |t| t.destroy }
+      userteam.each(&:destroy)
     else
-      flash[:error] = "Something went wrong.."
+      flash[:error] = 'Something went wrong..'
     end
     redirect_to team_path(@team)
   end

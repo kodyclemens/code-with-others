@@ -1,15 +1,13 @@
 class SessionsController < ApplicationController
   def new
-    if session[:user_id]
-      redirect_to root_path
-    end
+    redirect_to root_path if session[:user_id]
   end
 
   def create
     if params[:username]
       @user = User.find_by(username: params[:username])
       if @user.nil?
-        flash[:error] = "Did you type everything in correctly?"
+        flash[:error] = 'Did you type everything in correctly?'
         redirect_to login_path
       else
         if @user.authenticate(params[:password])
@@ -17,7 +15,7 @@ class SessionsController < ApplicationController
           flash[:message] = "Welcome, #{@user.username}"
           redirect_to root_path
         else
-          flash[:error] = "Invalid username/password"
+          flash[:error] = 'Invalid username/password'
           redirect_to login_path
         end
       end
@@ -25,14 +23,10 @@ class SessionsController < ApplicationController
       @user = User.find_by(github_uid: auth[:uid])
       if @user.nil?
         @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname], email: auth[:info][:email], avatar_url: auth[:info][:image], github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex, bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
-        session[:user_id] = @user.id
-        flash[:message] = "Welcome, #{@user.username}"
-        redirect_to root_path
-      else
-        session[:user_id] = @user.id
-        flash[:message] = "Welcome, #{@user.username}"
-        redirect_to root_path
       end
+      session[:user_id] = @user.id
+      flash[:message] = "Welcome, #{@user.username}"
+      redirect_to root_path
     end
   end
 
