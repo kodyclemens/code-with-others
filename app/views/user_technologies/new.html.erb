@@ -5,15 +5,16 @@
 
 <%= form_for(@technology) do |f| %>
   <%= f.label :technology %>
-  <%= f.collection_select :technology, Technology.all, :id, :name, include_blank: 'Select an existing technology' %>
+  <%= f.collection_select :technology_id, Technology.all, :id, :name, include_blank: 'Select an existing technology' %>
   <br>
-  <%= f.fields_for :technologies, Technology.new do |technology_fields| %>
+  <%= f.fields_for :technology, @technology.build_technology do |technology_fields| %>
     <%= f.label :name, 'Add a new technology' %>
     <%= technology_fields.text_field :name %>
   <% end %>
   <br>
   <%= f.label :skill_level, 'Your skill level' %>
   <%= f.select :skill_level, %i[1 2 3 4 5 6 7 8 9 10]%>
+  <%= f.hidden_field :user_id, value: @user.id %>
   <br>
   <%= f.submit 'Add Technology' %>
 <% end %>

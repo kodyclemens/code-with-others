@@ -50,6 +50,7 @@ group :development, :test do
   gem 'capybara'
   gem "database_cleaner"
   gem "rack_session_access"
+  gem 'pry'
 end
 
 group :development do

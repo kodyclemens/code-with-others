@@ -7,17 +7,12 @@ class UserTechnologiesController < ApplicationController
   end
 
   def create
-    if !params[:user_technology][:technology].empty?
-      technology = Technology.find(params[:user_technology][:technology])
-      UserTechnology.create(user_id: @user.id, technology_id: technology.id, skill_level: params[:user_technology][:skill_level])
-      redirect_to user_path(@user)
-    elsif !params[:user_technology][:technologies][:name].empty?
-      technology = Technology.find_or_create_by(params[:user_technology][:technologies][:name])
-      UserTechnology.create(user_id: @user.id, technology_id: technology.id, skill_level: params[:user_technology][:skill_level])
-      redirect_to user_path(@user)
-    else
+    if params[:user_technology][:technology_attributes][:name].empty? && params[:user_technology][:technology_id].empty?
       flash[:error] = 'You must select or create a technology.'
       redirect_to user_technologies_path
+    else
+      UserTechnology.create(user_technology_params)
+      redirect_to user_path(@user)
     end
   end
 
@@ -35,7 +30,7 @@ class UserTechnologiesController < ApplicationController
   private
 
   def user_technology_params
-    params.require(:user_technology).permit(:technology, :skill_level, technologies:[:name])
+    params.require(:user_technology).permit(:technology_id, :skill_level, :user_id, :technology_attributes => [:name])
   end
 
   def set_user

@@ -9,14 +9,7 @@ class Team < ApplicationRecord
   has_many :technologies, through: :team_technologies
 
   def self.most_comments
-    highest_comments = 0
-    team = nil
-    Team.all.each do |t|
-      if t.comments.count > highest_comments
-        highest_comments = t.comments.count
-        team = t
-      end
-    end
-    return team
+    joins(:comments).group(:id).order('COUNT(comments.id) DESC').limit(1).first
+    # SELECT teams.name COUNT(comments.id) AS 'comment_count' JOIN comments ON teams.id = comment.team_id GROUP BY team.name ORDER BY comment_count DESC LIMIT 1
   end
 end
