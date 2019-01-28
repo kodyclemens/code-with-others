@@ -38,7 +38,7 @@ $primary: #5f27cd;
 }
 
 .media img {
-  width: 10%;
+  width: 100px;
   height: auto;
   border-style: solid;
   border-width: 1px;
@@ -47,4 +47,16 @@ $primary: #5f27cd;
 .badge-creator {
   color: #fff;
   background-color: #5f27cd;
+}
+
+.badge-dark {
+  a:link {
+    color: #fff;
+    }
+    a:visited {
+    color: #fff;
+    }
+    a:hover {
+    color: #fff;
+    }
 }

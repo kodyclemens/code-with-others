@@ -28,7 +28,7 @@
       <figure>
         <img src="<%= user_avatar_url(c.user_id) %>" class="align-self-start mr-3" alt="...">
         <br>
-        <span class="badge badge-dark"><%= username(c.user_id) %></span>
+        <span class="badge badge-dark"><%= link_to username(c.user_id), user_path(c.user_id) %></span>
         <% if user_id(c.user_id) == @team.creator_id %>
           <span class="badge badge-creator">Creator</span>
         <% end %>
