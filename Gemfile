@@ -46,6 +46,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'rb-readline'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem "database_cleaner"
+  gem "rack_session_access"
 end
 
 group :development do
@@ -58,8 +62,7 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # Adds support for selenium driver
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
