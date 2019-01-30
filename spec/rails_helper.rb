@@ -83,6 +83,7 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
   config.include LoginHelper, :type => :feature
+  config.include TeamHelper, :type => :feature
 
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!

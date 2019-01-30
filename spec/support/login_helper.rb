@@ -8,4 +8,14 @@ module LoginHelper
     click_button('Register')
   end
 
+  def user_login
+    fill_in("username", :with => "Daffy Duck")
+    fill_in("password", :with => "quack")
+    click_button('Log In')
+  end
+
+  def create_user
+    User.create(username: 'Daffy Duck', email: 'daffy@duck.com', password: 'quack')
+  end
+
 end

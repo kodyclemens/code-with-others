@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def new
     redirect_to root_path if session[:user_id]
@@ -22,7 +24,10 @@ class SessionsController < ApplicationController
     elsif auth
       @user = User.find_by(github_uid: auth[:uid])
       if @user.nil?
-        @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname], email: auth[:info][:email], avatar_url: auth[:info][:image], github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex, bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
+        @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname],
+                            email: auth[:info][:email], avatar_url: auth[:info][:image],
+                            github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex,
+                            bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
       end
       session[:user_id] = @user.id
       flash[:message] = "Welcome, #{@user.username}"
@@ -38,7 +43,9 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:username, :real_name, :email, :password, :password_confirmation, :github_uid, :github_profile_url, :company, :bio, :avatar_url, :communication_method)
+    params.require(:session).permit(:username, :real_name, :email, :password,
+                                    :password_confirmation, :github_uid, :github_profile_url,
+                                    :company, :bio, :avatar_url, :communication_method)
   end
 
   def auth
