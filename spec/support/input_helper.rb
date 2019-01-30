@@ -1,4 +1,4 @@
-module TeamHelper
+module InputHelper
   def make_team
     fill_in("team[name]", :with => "A New Team")
     fill_in("team[avatar_url]", :with => "https://i.imgur.com/zXHbz7Z.jpg")
@@ -7,5 +7,10 @@ module TeamHelper
     fill_in("team[goals]", :with => "Works as little as possible")
     fill_in("team[communication_method]", :with => "None yet...")
     click_button('Create Team')
+  end
+
+  def make_a_comment
+    fill_in("comment[content]", :with => "You made a comment!")
+    click_button('Create Comment')
   end
 end
