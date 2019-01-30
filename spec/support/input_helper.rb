@@ -13,4 +13,13 @@ module InputHelper
     fill_in("comment[content]", :with => "You made a comment!")
     click_button('Create Comment')
   end
+
+  def submit_user_technology_form
+    fill_in("user_technology[technology_attributes][name]", :with => "Javascript")
+    click_button('Add Technology')
+  end
+
+  def create_technology
+    Technology.create(name: "Ruby")
+  end
 end

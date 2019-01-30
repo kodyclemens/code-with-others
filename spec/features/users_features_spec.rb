@@ -95,4 +95,14 @@ describe 'Feature Test: User Interactions', type: :feature do
     visit '/teams/4/comments/new'
     expect(page).to have_content('You must be logged in to access this section')
   end
+
+  it 'a user can add a technology to their profile by filling in a name' do
+    create_user
+    create_technology
+    visit '/login'
+    user_login
+    visit '/users/9/technologies/new'
+    submit_user_technology_form
+    expect(page).to have_content('Javascript')
+  end
 end
