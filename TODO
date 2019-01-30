@@ -7,7 +7,8 @@ Todo List:
   ✔ Continuous integration service to automate testing before deployment (Travis CI) @done(19-01-27 21:11)
   ✔ Change auto deploys to wait until tests pass @done(19-01-27 21:25)
   ☐ Complete feature tests for all major functions of the web app @started(19-01-29 19:37)
+  ☐ Implement Materialize instead of Bootstrap
+  ☐ Complete UI layout
   ☐ Refactor views (DRY up repeated partials)
   ☐ Merge flash_messages and object_errors into one partial
   ☐ Take a break and comment code
-  ☐ Complete UI layout
