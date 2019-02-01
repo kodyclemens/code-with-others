@@ -11,27 +11,23 @@ class SessionsController < ApplicationController
       if @user.nil?
         flash[:error] = 'Did you type everything in correctly?'
         redirect_to login_path
-      else
-        if @user.authenticate(params[:password])
-          session[:user_id] = @user.id
-          flash[:message] = "Welcome, #{@user.username}"
-          redirect_to root_path
-        else
-          flash[:error] = 'Invalid username/password'
-          redirect_to login_path
-        end
+      elsif @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        flash[:message] = "Welcome, #{@user.username}"
+        redirect_to root_path
       end
-    elsif auth
-      @user = User.find_by(github_uid: auth[:uid])
-      if @user.nil?
-        @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname],
-                            email: auth[:info][:email], avatar_url: auth[:info][:image],
-                            github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex,
-                            bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
-      end
+    end
+  end
+
+  def omniauth
+    if auth
+      @user = User.find_or_create_by_uid(auth)
       session[:user_id] = @user.id
       flash[:message] = "Welcome, #{@user.username}"
       redirect_to root_path
+    else
+      flash[:error] = 'Something went wrong...'
+      redirect_to login_path
     end
   end
 
