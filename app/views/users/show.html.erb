@@ -2,44 +2,44 @@
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <div class="modal-body">
-  <center>
-    <img src="<%= @user.avatar_url %>" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-  <h3 class="media-heading"><%= @user.username %><small> <%= @user.real_name if @user.real_name %></small></h3>
-  <h6>
-    <% @user.user_technologies.each do |t| %>
-      <%= "#{grab_technology_name(t.technology_id)}" %> <span class="badge badge-primary"><%= t.skill_level %> </span> <%= link_to fa_icon('trash-o'), user_technology_path(technology_id: t.id), method: :delete %>|
-    <% end %>
-      <%= link_to fa_icon('plus-circle'), user_technologies_path(@user) %>
-  </h6>
-  <%= link_to 'Edit profile', edit_user_path(@user) %> <%= link_to fa_icon('user-circle'), edit_user_path(@user) %>
+	<center>
+		<img src="<%= @user.avatar_url %>" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+	<h3 class="media-heading"><%= @user.username %><small> <%= @user.real_name if @user.real_name %></small></h3>
+	<h6>
+		<% @user.user_technologies.each do |t| %>
+			<%= "#{grab_technology_name(t.technology_id)}" %> <span class="badge badge-primary"><%= t.skill_level %> </span> <%= link_to fa_icon('trash-o'), user_technology_path(technology_id: t.id), method: :delete %>|
+		<% end %>
+		<%= link_to fa_icon('plus-circle'), user_technologies_path(@user) %>
+	</h6>
+	<%= link_to 'Edit profile', edit_user_path(@user) %> <%= link_to fa_icon('user-circle'), edit_user_path(@user) %>
 </center>
 <hr>
 <center>
-  <div class="container">
-    <p class="text-left"><strong>Bio: </strong><br>
-      <%= @user.bio if !@user.bio.nil? %></p>
-  </div>
-  <br>
+	<div class="container">
+		<p class="text-left"><strong>Bio: </strong><br>
+			<%= @user.bio if !@user.bio.nil? %></p>
+	</div>
+	<br>
 </center>
 </div>
 </div>
 <div class="container mx-auto">
-  <div class="text-center">
-    <div class="row">
-      <% @user.teams.each do |t| %>
-        <div class="col-lg-3">
-          <div class="card" style="width: 18rem;">
-            <img src="<%= t.avatar_url %>" class="card-img-top" alt="...">
-            <figcaption class="figure-caption text-center">Created by: <%= link_to creator_name(t.creator_id), user_path(t.creator_id) %> (<%= t.updated_at.strftime('%b %d') %>)</figcaption>
-            <div class="card-body">
-              <h5 class="card-title"><%= t.name.titleize %></h5>
-              <p class="card-text"><strong>Description:</strong> <%= t.description %></p>
-              <p class="card-text"><strong>Goals:</strong> <%= t.goals %></p>
-              <p class="card-text"><strong>Slack:</strong> <%= t.communication_method %></p>
-              <a href="<%= team_path(t) %>" class="btn btn-primary">View Group</a>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+	<div class="text-center">
+		<div class="row">
+			<% @user.teams.each do |t| %>
+				<div class="col-lg-3">
+					<div class="card" style="width: 18rem;">
+						<img src="<%= t.avatar_url %>" class="card-img-top" alt="...">
+						<figcaption class="figure-caption text-center">Created by: <%= link_to creator_name(t.creator_id), user_path(t.creator_id) %> (<%= t.updated_at.strftime('%b %d') %>)</figcaption>
+						<div class="card-body">
+							<h5 class="card-title"><%= t.name.titleize %></h5>
+							<p class="card-text"><strong>Description:</strong> <%= t.description %></p>
+							<p class="card-text"><strong>Goals:</strong> <%= t.goals %></p>
+							<p class="card-text"><strong>Slack:</strong> <%= t.communication_method %></p>
+							<a href="<%= team_path(t) %>" class="btn btn-primary">View Group</a>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>

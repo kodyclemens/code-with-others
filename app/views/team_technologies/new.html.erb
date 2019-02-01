@@ -2,16 +2,15 @@
 <h2>Add a technology</h2>
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
-
 <%= form_for(@technology) do |f| %>
-  <%= f.label :technology %>
-  <%= f.collection_select :technology_id, Technology.all, :id, :name, include_blank: 'Select an existing technology' %>
-  <br>
-  <%= f.fields_for :technology, @technology.build_technology do |technology_fields| %>
-    <%= f.label :name, 'Add a new technology' %>
-    <%= technology_fields.text_field :name %>
-  <% end %>
-  <br>
-  <%= f.hidden_field :team_id, value: @team.id %>
-  <%= f.submit 'Add Technology' %>
+	<%= f.label :technology %>
+	<%= f.collection_select :technology_id, Technology.all, :id, :name, include_blank: 'Select an existing technology' %>
+	<br>
+	<%= f.fields_for :technology, @technology.build_technology do |technology_fields| %>
+		<%= f.label :name, 'Add a new technology' %>
+		<%= technology_fields.text_field :name %>
+	<% end %>
+	<br>
+	<%= f.hidden_field :team_id, value: @team.id %>
+	<%= f.submit 'Add Technology' %>
 <% end %>

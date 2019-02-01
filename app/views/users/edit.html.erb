@@ -2,33 +2,33 @@
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <%= form_for(@user) do |f| %>
-  <div class="container">
-    <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_field :username, class: "form-control" %>
-      <br>
-      <%= f.label :email %>
-      <%= f.text_field :email, class: "form-control" %>
-      <br>
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
-      <br>
-      <%= f.label :password_confirmation, 'Confirm Password' %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
-      <br>
-      <%= f.label :real_name, 'Name' %>
-      <%= f.text_field :real_name, class: "form-control" %>
-      <br>
-      <%= f.label :company %>
-      <%= f.text_field :company, class: "form-control" %>
-      <br>
-      <%= f.label :bio %>
-      <%= f.text_area :bio, class: "form-control" %>
-      <br>
-      <%= f.label :avatar_url %>
-      <%= f.text_field :avatar_url, class: "form-control" %>
-      <br>
-      <%= f.submit 'Update Profile', class: 'btn btn-primary' %>
-    </div>
-  </div>
+	<div class="container">
+		<div class="form-group">
+			<%= f.label :username %>
+			<%= f.text_field :username, class: "form-control" %>
+			<br>
+			<%= f.label :email %>
+			<%= f.text_field :email, class: "form-control" %>
+			<br>
+			<%= f.label :password %>
+			<%= f.password_field :password, class: "form-control" %>
+			<br>
+			<%= f.label :password_confirmation, 'Confirm Password' %>
+			<%= f.password_field :password_confirmation, class: "form-control" %>
+			<br>
+			<%= f.label :real_name, 'Name' %>
+			<%= f.text_field :real_name, class: "form-control" %>
+			<br>
+			<%= f.label :company %>
+			<%= f.text_field :company, class: "form-control" %>
+			<br>
+			<%= f.label :bio %>
+			<%= f.text_area :bio, class: "form-control" %>
+			<br>
+			<%= f.label :avatar_url %>
+			<%= f.text_field :avatar_url, class: "form-control" %>
+			<br>
+			<%= f.submit 'Update Profile', class: 'btn btn-primary' %>
+		</div>
+	</div>
 <% end %>

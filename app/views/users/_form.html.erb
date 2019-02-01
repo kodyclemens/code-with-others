@@ -3,32 +3,32 @@
 		<div class="col-xs-12 col-sm-6 col-lg-6">
 			<%= form_tag('/users', method: 'POST') do %>
 				<%= label_tag "Username" %>
-        <% if @user.errors[:password].any? %>
-				  <%= text_field_tag "user[username]", '', class: 'form-control is-invalid' %>
-        <% else %>
-				  <%= text_field_tag "user[username]", '', class: 'form-control' %>
-        <% end %>
+				<% if @user.errors[:password].any? %>
+					<%= text_field_tag "user[username]", '', class: 'form-control is-invalid' %>
+				<% else %>
+					<%= text_field_tag "user[username]", '', class: 'form-control' %>
+				<% end %>
 				<br />
-				  <%= label_tag "Email" %>
-          <% if @user.errors[:password].any? %>
-					  <%= email_field_tag "user[email]", '', class: 'form-control is-invalid'  %>
-          <% else %>
-					  <%= email_field_tag "user[email]", '', class: 'form-control'  %>
-          <% end %>
+				<%= label_tag "Email" %>
+				<% if @user.errors[:password].any? %>
+					<%= email_field_tag "user[email]", '', class: 'form-control is-invalid'  %>
+				<% else %>
+					<%= email_field_tag "user[email]", '', class: 'form-control'  %>
+				<% end %>
 				<br />
-				  <%= label_tag "Password" %>
-          <% if @user.errors[:password].any? %>
-					  <%= password_field_tag "user[password]", '', class: 'form-control is-invalid'  %>
-          <% else %>
-					  <%= password_field_tag "user[password]", '', class: 'form-control'  %>
-          <% end %>
+				<%= label_tag "Password" %>
+				<% if @user.errors[:password].any? %>
+					<%= password_field_tag "user[password]", '', class: 'form-control is-invalid'  %>
+				<% else %>
+					<%= password_field_tag "user[password]", '', class: 'form-control'  %>
+				<% end %>
 				<br />
-          <%= label_tag "Confirm Password" %>
-          <% if @user.errors[:password_confirmation].any? %>
-					  <%= password_field_tag "user[password_confirmation]", '', class: 'form-control is-invalid' %>
-          <% else %>
-					  <%= password_field_tag "user[password_confirmation]", '', class: 'form-control' %>
-          <% end %>
+				<%= label_tag "Confirm Password" %>
+				<% if @user.errors[:password_confirmation].any? %>
+					<%= password_field_tag "user[password_confirmation]", '', class: 'form-control is-invalid' %>
+				<% else %>
+					<%= password_field_tag "user[password_confirmation]", '', class: 'form-control' %>
+				<% end %>
 				<%= hidden_field_tag "user[avatar_url]",
 				'https://i.imgur.com/WNQg4gn.png' %>
 				<br />
