@@ -15,6 +15,7 @@ class UserTechnologiesController < ApplicationController
       redirect_to user_technologies_path
     else
       unless UserTechnology.exists?(name, id, @user)
+        params[:user_technology][:technology_attributes][:name] = set_tech_name(id) if name.empty?
         UserTechnology.create(user_technology_params)
       end
       redirect_to user_path(@user)
@@ -40,5 +41,10 @@ class UserTechnologiesController < ApplicationController
 
   def set_user
     @user = User.find(session[:user_id])
+  end
+
+  def set_tech_name(id)
+    tech = Technology.find(id)
+    tech.name
   end
 end

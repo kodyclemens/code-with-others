@@ -9,11 +9,17 @@ class TeamTechnologiesController < ApplicationController
   end
 
   def create
-    if params[:team_technology][:technology_attributes][:name].empty? && params[:team_technology][:technology_id].empty?
+    name = params[:team_technology][:technology_attributes][:name]
+    id = params[:team_technology][:technology_id]
+
+    if name.empty? && id.empty?
       flash[:error] = 'You must select or create a technology.'
       redirect_to team_technologies_path(@team)
     else
-      TeamTechnology.create(team_technology_params)
+      unless TeamTechnology.exists?(name, id, @team)
+        params[:team_technology][:technology_attributes][:name] = set_tech_name(id) if name.empty?
+        TeamTechnology.create(team_technology_params)
+      end
       redirect_to team_path(@team)
     end
   end
@@ -42,5 +48,10 @@ class TeamTechnologiesController < ApplicationController
 
   def user_is_creator?(team)
     team.creator_id.to_s == session[:user_id].to_s
+  end
+
+  def set_tech_name(id)
+    tech = Technology.find(id)
+    tech.name
   end
 end
