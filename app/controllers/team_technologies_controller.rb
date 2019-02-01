@@ -9,17 +9,12 @@ class TeamTechnologiesController < ApplicationController
   end
 
   def create
-    if !params[:team_technology][:technology].empty?
-      technology = Technology.find(params[:team_technology][:technology])
-      TeamTechnology.create(team_id: @team.id, technology_id: technology.id)
-      redirect_to team_path(@team)
-    elsif !params[:team_technology][:technologies][:name].empty?
-      technology = Technology.find_or_create_by(params[:team_technology][:technologies][:name])
-      TeamTechnology.create(team_id: @team.id, technology_id: technology.id)
-      redirect_to team_path(@team)
-    else
+    if params[:team_technology][:technology_attributes][:name].empty? && params[:team_technology][:technology_id].empty?
       flash[:error] = 'You must select or create a technology.'
-      redirect_to team_technologies_path
+      redirect_to team_technologies_path(@team)
+    else
+      TeamTechnology.create(team_technology_params)
+      redirect_to team_path(@team)
     end
   end
 
@@ -34,7 +29,7 @@ class TeamTechnologiesController < ApplicationController
   private
 
   def team_technology_params
-    params.require(:team_technology).permit(:technology, technologies:[:name])
+    params.require(:team_technology).permit(:technology_id, :team_id, technologies:[:name], :technology_attributes => [:name])
   end
 
   def set_user

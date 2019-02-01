@@ -7,11 +7,16 @@ class UserTechnologiesController < ApplicationController
   end
 
   def create
-    if params[:user_technology][:technology_attributes][:name].empty? && params[:user_technology][:technology_id].empty?
+    name = params[:user_technology][:technology_attributes][:name]
+    id = params[:user_technology][:technology_id]
+
+    if name.empty? && id.empty?
       flash[:error] = 'You must select or create a technology.'
       redirect_to user_technologies_path
     else
-      UserTechnology.create(user_technology_params)
+      unless UserTechnology.exists?(name, id, @user)
+        UserTechnology.create(user_technology_params)
+      end
       redirect_to user_path(@user)
     end
   end
