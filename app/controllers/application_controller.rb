@@ -1,3 +1,5 @@
+# Helper methods defined in this controller
+# Used throughout child controllers
 class ApplicationController < ActionController::Base
   def current_user
     @user = User.find(session[:user_id]) if session[:user_id]
