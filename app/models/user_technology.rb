@@ -3,7 +3,7 @@ class UserTechnology < ApplicationRecord
   validates :user_id, presence: true
   belongs_to :user
   belongs_to :technology, optional: true
-  accepts_nested_attributes_for :technology, reject_if: :all_blank
+  # accepts_nested_attributes_for :technology, reject_if: :all_blank
 
   def self.exists?(name = nil, id = nil, user)
     if id.empty?

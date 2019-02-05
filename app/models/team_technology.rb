@@ -1,7 +1,7 @@
 class TeamTechnology < ApplicationRecord
   belongs_to :team
   belongs_to :technology, optional: true
-  accepts_nested_attributes_for :technology, reject_if: :all_blank
+  # accepts_nested_attributes_for :technology, reject_if: :all_blank
 
   def self.exists?(name = nil, id = nil, team)
     if id.empty?
