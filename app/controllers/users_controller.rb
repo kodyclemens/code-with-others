@@ -30,6 +30,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def link_github
+    if @user.github_uid.nil?
+      # link
+    else
+      flash[:error] = 'Your account is already linked!'
+      redirect_to user_path(@user)
+    end
+  end
+
   def create
     @user = User.new(user_params) if params[:user]
     if verify_recaptcha(model: @user) && @user.valid?

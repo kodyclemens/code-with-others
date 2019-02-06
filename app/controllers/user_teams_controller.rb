@@ -3,6 +3,7 @@ class UserTeamsController < ApplicationController
   before_action :set_user
 
   def create
+    # Prevent form editing to ensure users cannot be added by editing the form
     @userteam = UserTeam.new(user_id: params[:user_id], team_id: params[:team_id])
     if @userteam.valid?
       @userteam.save
@@ -13,6 +14,7 @@ class UserTeamsController < ApplicationController
   end
 
   def destroy
+    # Ensure @team and @team_member are valid objects, handle errors
     @team = Team.find(params[:id])
     @team_member = User.find(params[:user_id])
     if user_authenticated?(@user.id) && @team.users.include?(@team_member)

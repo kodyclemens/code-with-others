@@ -20,11 +20,18 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    if auth
+    if auth && session[:user_id].nil?
       @user = User.find_or_create_by_uid(auth)
       session[:user_id] = @user.id
       flash[:message] = "Welcome, #{@user.username}"
       redirect_to root_path
+    elsif auth && !session[:user_id].nil?
+      if current_user.link_github(auth[:uid])
+        flash[:message] = 'User account linked!'
+      else
+        flash[:error] = 'Unable to link accounts!'
+      end
+      redirect_to user_path(@user)
     else
       flash[:error] = 'Something went wrong...'
       redirect_to login_path
@@ -33,6 +40,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
+    @user = nil
     redirect_to root_path
   end
 

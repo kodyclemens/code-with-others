@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true
+  validates :password, presence: true, confirmation: true, length: { minimum: 1 }, allow_nil: true
+  validates :github_uid, uniqueness: true
 
   has_many :user_teams
   has_many :teams, through: :user_teams
@@ -20,5 +21,10 @@ class User < ApplicationRecord
                           bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
     end
     @user
+  end
+
+  def link_github(github_uid)
+    self.update(github_uid: github_uid)
+    self.errors ? false : true
   end
 end
