@@ -1,6 +1,11 @@
 <%= render partial: "layouts/nav", locals: { user: @user } %>
 <%= render partial: 'layouts/flash_message' %>
 <br>
-<% if !@user %>
-  Index page
-<% end %>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Welcome to Code With Others</h1>
+      <p class="lead">Please excuse the mess! The front-end is currently being developed.</p>
+    </div>
+  </div>
+</div>
