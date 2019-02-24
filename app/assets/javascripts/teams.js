@@ -16,7 +16,7 @@ $(document).ready(function(){
       $('#goals-' + id).text(goals);
       $('#slack-' + id).text(slack);
       $('#image-' + id).attr('src', image);
-      $('#button-' + id).append('<a href="#" class="btn btn-primary">View Group</a>');
+      $('#button-' + id).append(`<a href="/teams/${id}" class="btn btn-primary">View Team</a>`);
 
       if (creationDate < 1) {
         daysAgo = 'today';
