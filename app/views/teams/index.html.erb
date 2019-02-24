@@ -9,14 +9,14 @@
     <% @teams.each do |t| %>
       <div class="col-lg-3">
         <div class="card" style="width: 18rem;">
-          <img src="<%= t.avatar_url %>" id="image-<%=t.id%>" class="card-img-top" alt="...">
-          <figcaption class="figure-caption text-center" id="creator-<%=t.id%>">Created by: <%= link_to creator_name(t.creator_id), user_path(t.creator_id) %> (<%= t.updated_at.strftime('%b %d') %>)</figcaption>
+          <img src="#" id="image-<%=t.id%>" class="card-img-top" alt="...">
+          <figcaption class="figure-caption text-center" id="creator-<%=t.id%>"></figcaption>
           <div class="card-body">
-            <h5 class="card-title" id="title-<%=t.id%>"><%= t.name.titleize %></h5>
-            <p class="card-text" id="desc-<%=t.id%>"><strong>Description:</strong> <%= t.description %></p>
-            <p class="card-text" id="goals-<%=t.id%>"><strong>Goals:</strong> <%= t.goals %></p>
-            <p class="card-text" id="slack-<%=t.id%>"><strong>Slack:</strong> <%= t.communication_method %></p>
-            <a href="<%= team_path(t) %>" class="btn btn-primary" id="view-<%=t.id%>">View Group</a>
+            <h5 class="card-title" id="title-<%=t.id%>"></h5>
+            <p class="card-text" id="desc-<%=t.id%>"></p>
+            <p class="card-text" id="goals-<%=t.id%>"></p>
+            <p class="card-text" id="slack-<%=t.id%>"></p>
+            <p id="button-<%=t.id%>"></p>
           </div>
         </div>
       </div>

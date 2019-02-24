@@ -46,8 +46,8 @@ describe 'Feature Test: User Interactions', type: :feature do
     user_login
     visit '/teams/new'
     make_team
-    expect(page).to have_content('A New Team')
-    expect(page).to have_content('Combine forces and conquer the world')
+    # Rendering via JS, checking to ensure the image tag is generated.
+    expect(page).to have_selector(:css, "img#image-1")
   end
 
   it 'cannot create a team while logged out' do
