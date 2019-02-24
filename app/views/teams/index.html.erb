@@ -12,11 +12,11 @@
           <img src="<%= t.avatar_url %>" class="card-img-top" alt="...">
           <figcaption class="figure-caption text-center">Created by: <%= link_to creator_name(t.creator_id), user_path(t.creator_id) %> (<%= t.updated_at.strftime('%b %d') %>)</figcaption>
           <div class="card-body">
-            <h5 class="card-title"><%= t.name.titleize %></h5>
-            <p class="card-text"><strong>Description:</strong> <%= t.description %></p>
-            <p class="card-text"><strong>Goals:</strong> <%= t.goals %></p>
-            <p class="card-text"><strong>Slack:</strong> <%= t.communication_method %></p>
-            <a href="<%= team_path(t) %>" class="btn btn-primary">View Group</a>
+            <h5 class="card-title-<%=t.id%>"><%= t.name.titleize %></h5>
+            <p class="card-text-<%=t.id%>"><strong>Description:</strong> <%= t.description %></p>
+            <p class="card-text-<%=t.id%>"><strong>Goals:</strong> <%= t.goals %></p>
+            <p class="card-text-<%=t.id%>"><strong>Slack:</strong> <%= t.communication_method %></p>
+            <a href="<%= team_path(t) %>" class="btn btn-primary button-<%=t.id%>">View Group</a>
           </div>
         </div>
       </div>
