@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  alert('hi');
+  $.get('/teams.json', function(data) {
+  });
 });
-
-console.log('working');
