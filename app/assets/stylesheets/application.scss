@@ -22,13 +22,17 @@ $primary: #5f27cd;
 .jumbotron {
   border-style: solid;
   border-width: 1px;
-  box-shadow: 5px 10px #888888;
   border-color: #576574;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.815);
+  color: #fff;
+  margin-top: 10%;
+  border-color: #000;
+  width: 40%;
+  box-shadow: 5px 10px #8c00ff2c;
 }
 
 .navbar {
-  background-color: #576574;
+  background-color: #000000;
 }
 
 .media img {
@@ -53,4 +57,11 @@ $primary: #5f27cd;
     a:hover {
     color: #fff;
     }
+}
+
+.bg {
+  background-image: url('https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

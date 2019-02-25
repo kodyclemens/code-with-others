@@ -1,11 +1,9 @@
-<%= render partial: "layouts/nav", locals: { user: @user } %>
-<%= render partial: 'layouts/flash_message' %>
-<br>
-<div class="container">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Welcome to Code With Others</h1>
-      <p class="lead">Please excuse the mess! The front-end is currently being developed.</p>
-    </div>
+<div class="bg">
+  <%= render partial: "layouts/nav", locals: { user: @user } %>
+  <%= render partial: 'layouts/flash_message' %>
+  <div class="jumbotron container">
+    <h1 class="display-4">Code With Others</h1>
+    <p class="lead">Start coding and learning with others right now.</p>
+    <a class="btn btn-primary btn-lg" href="/auth/github" role="button">Login with GitHub</a>
   </div>
 </div>

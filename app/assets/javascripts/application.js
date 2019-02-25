@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
+
+console.log('Kody Clemens - github.com/kodyclemens');
