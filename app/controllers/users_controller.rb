@@ -12,16 +12,19 @@ class UsersController < ApplicationController
 
   def destroy
     user_account = User.find(params[:id])
-    if user_account.id == @user.id
+    ref = params[:ref]
+    if user_account.id == @user.id && ref.nil?
       flash[:message] = "#{user_account.username} deleted!"
       user_account.destroy
       session.delete :user_id
       @user = nil
       redirect_to root_path
-    elsif @user.admin?
+    elsif @user.admin? && ref.nil?
       flash[:message] = "#{user_account.username} deleted!"
       user_account.destroy
       redirect_to users_path
+    elsif ref == 'admin' && @user.admin?
+      user_account.destroy
     else
       flash[:error] = "Not permitted."
       redirect_to root_path
