@@ -12,7 +12,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users, status: 200
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @users, status: 200 }
+    end
   end
 
   def show
