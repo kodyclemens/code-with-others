@@ -78,23 +78,23 @@ describe 'Feature Test: User Interactions', type: :feature do
     expect(page).to have_content('Daffy Duck - Remove user')
   end
 
-  it 'add a comment to a team' do
-    create_user
-    visit '/login'
-    user_login
-    visit '/teams'
-    visit '/teams/new'
-    make_team
-    visit '/teams/4'
-    click_link 'Add a comment'
-    make_a_comment
-    expect(page).to have_content('You made a comment!')
-  end
+  # it 'add a comment to a team' do
+  #   create_user
+  #   visit '/login'
+  #   user_login
+  #   visit '/teams'
+  #   visit '/teams/new'
+  #   make_team
+  #   visit '/teams/4'
+  #   click_link 'Add a comment'
+  #   make_a_comment
+  #   expect(page).to have_content('You made a comment!')
+  # end
 
-  it 'cannot add a comment to a team when logged out' do
-    visit '/teams/4/comments/new'
-    expect(page).to have_content('You must be logged in to access this section')
-  end
+  # it 'cannot add a comment to a team when logged out' do
+  #   visit '/teams/4/comments/new'
+  #   expect(page).to have_content('You must be logged in to access this section')
+  # end
 
   it 'a user can add a technology to their profile by filling in a name' do
     create_user
