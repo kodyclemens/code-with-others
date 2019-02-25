@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, except: %i[new create]
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update index]
 
   def new
     if session[:user_id].nil?
@@ -12,9 +12,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    respond_to do |f|
-      f.html { render :index }
-      f.json { render json: @users, status: 200 }
+    if @user.admin?
+      respond_to do |f|
+        f.html { render :index }
+        f.json { render json: @users, status: 200 }
+      end
+    else
+      redirect_to root_path
     end
   end
 

@@ -27,4 +27,8 @@ class User < ApplicationRecord
     self.update(github_uid: github_uid)
     self.errors ? false : true
   end
+
+  def admin?
+    self.account_type == 'admin'
+  end
 end

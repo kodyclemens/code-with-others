@@ -1,10 +1,19 @@
 <% if flash[:error] %>
-  <div class="alert alert-warning" role="alert">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
    <%= flash[:error] %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
   </div>
 <% end %>
 <% if flash[:message] %>
-  <div class="alert alert-success" role="alert">
+  <div class="alert alert-success alert-dismissible fade show" id="success" role="alert">
    <%= flash[:message] %>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <script type="text/javascript" charset='utf-8'>
+    window.setTimeout(function() { $("#success").alert('close'); }, 2000);
+  </script>
   </div>
 <% end %>

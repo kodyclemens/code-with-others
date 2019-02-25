@@ -1,0 +1,15 @@
+<%= render partial: "layouts/nav", locals: { user: @user } %>
+<%= render partial: 'layouts/flash_message' %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Profile</th>
+      <th scope="col">Account Type</th>
+      <th scope="col">Avatar</th>
+    </tr>
+  </thead>
+  <tbody id="user_table">
+  </tbody>
+</table>
