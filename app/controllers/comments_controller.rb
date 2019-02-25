@@ -7,19 +7,14 @@ class CommentsController < ApplicationController
     @comments = Comment.where(team_id: @team.id)
   end
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = Comment.new(comment_params)
     @comment.team_id = @team.id
     @comment.user_id = @user.id
+
     if @comment.valid?
       @comment.save
-      redirect_to team_path(@team)
-    else
-      render 'comments/new'
+      render json: @comment, status: 201
     end
   end
 

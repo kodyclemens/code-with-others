@@ -47,9 +47,9 @@ $(document).ready(function(){
 
       for (let x in data[i].users) {
         if (data[i].users[x].id === data[i].creator_id) {
-          let creator = data[i].users[x].username;
-          let userID = data[i].users[x].id;
-          let creatorProfile = `<a href="/users/${userID}">${creator}</a>`;
+          const creator = data[i].users[x].username;
+          const userID = data[i].users[x].id;
+          const creatorProfile = `<a href="/users/${userID}">${creator}</a>`;
           $('#creator-' + id).text(`Created ${team.ageMessage()} by: `);
           $('#creator-' + id).append(creatorProfile);
         }
