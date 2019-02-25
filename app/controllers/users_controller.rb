@@ -1,11 +1,29 @@
 class UsersController < ApplicationController
   before_action :require_login, except: %i[new create]
-  before_action :set_user, only: %i[edit update index]
+  before_action :set_user, only: %i[edit update index destroy]
 
   def new
     if session[:user_id].nil?
       @user = User.new
     else
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+    user_account = User.find(params[:id])
+    if user_account.id == @user.id
+      flash[:message] = "#{user_account.username} deleted!"
+      user_account.destroy
+      session.delete :user_id
+      @user = nil
+      redirect_to root_path
+    elsif @user.admin?
+      flash[:message] = "#{user_account.username} deleted!"
+      user_account.destroy
+      redirect_to users_path
+    else
+      flash[:error] = "Not permitted."
       redirect_to root_path
     end
   end
@@ -31,7 +49,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless user_authenticated?(params[:id])
+    if user_authenticated?(params[:id])
+      @account = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -76,6 +98,6 @@ class UsersController < ApplicationController
   end
 
   def user_authenticated?(param_id)
-    param_id.to_s == session[:user_id].to_s
+    param_id.to_s == session[:user_id].to_s || @user.admin?
   end
 end
