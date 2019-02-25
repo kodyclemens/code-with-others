@@ -4,14 +4,11 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.all
+    @team = Team.new
     respond_to do |f|
       f.html { render :index }
       f.json { render json: @teams, status: 200 }
     end
-  end
-
-  def new
-    @team = Team.new
   end
 
   def show

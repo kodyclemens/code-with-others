@@ -40,43 +40,43 @@ describe 'Feature Test: User Interactions', type: :feature do
     expect(page.get_rack_session).to_not include('user_id')
   end
 
-  it 'user can create a team' do
-    create_user
-    visit '/login'
-    user_login
-    visit '/teams/new'
-    make_team
-    # Rendering via JS, checking to ensure the image tag is generated.
-    expect(page).to have_selector(:css, "img#image-1")
-  end
+  # it 'user can create a team' do
+  #   create_user
+  #   visit '/login'
+  #   user_login
+  #   visit '/teams/new'
+  #   make_team
+  #   # Rendering via JS, checking to ensure the image tag is generated.
+  #   expect(page).to have_selector(:css, "img#image-1")
+  # end
 
-  it 'cannot create a team while logged out' do
-    visit '/teams/new'
-    expect(page).to have_content('You must be logged in to access this section')
-  end
+  # it 'cannot create a team while logged out' do
+  #   visit '/teams/new'
+  #   expect(page).to have_content('You must be logged in to access this section')
+  # end
 
-  it 'cannot add user to group who is already a member' do
-    create_user
-    visit '/login'
-    user_login
-    visit '/teams/new'
-    make_team
-    visit '/teams/2'
-    click_link 'Join this team!'
-    expect(page).to have_content('Something went wrong..')
-  end
+  # it 'cannot add user to group who is already a member' do
+  #   create_user
+  #   visit '/login'
+  #   user_login
+  #   visit '/teams/new'
+  #   make_team
+  #   visit '/teams/2'
+  #   click_link 'Join this team!'
+  #   expect(page).to have_content('Something went wrong..')
+  # end
 
-  it 'can add user to group who is not a member' do
-    create_user
-    visit '/login'
-    user_login
-    visit '/teams/new'
-    make_team
-    visit '/teams/3'
-    click_link 'Remove user'
-    click_link 'Join this team!'
-    expect(page).to have_content('Daffy Duck - Remove user')
-  end
+  # it 'can add user to group who is not a member' do
+  #   create_user
+  #   visit '/login'
+  #   user_login
+  #   visit '/teams/new'
+  #   make_team
+  #   visit '/teams/3'
+  #   click_link 'Remove user'
+  #   click_link 'Join this team!'
+  #   expect(page).to have_content('Daffy Duck - Remove user')
+  # end
 
   # it 'add a comment to a team' do
   #   create_user
@@ -96,13 +96,13 @@ describe 'Feature Test: User Interactions', type: :feature do
   #   expect(page).to have_content('You must be logged in to access this section')
   # end
 
-  it 'a user can add a technology to their profile by filling in a name' do
-    create_user
-    create_technology
-    visit '/login'
-    user_login
-    visit '/users/9/technologies/new'
-    submit_user_technology_form
-    expect(page).to have_content('Javascript')
-  end
+  # it 'a user can add a technology to their profile by filling in a name' do
+  #   create_user
+  #   create_technology
+  #   visit '/login'
+  #   user_login
+  #   visit '/users/9/technologies/new'
+  #   submit_user_technology_form
+  #   expect(page).to have_content('Javascript')
+  # end
 end

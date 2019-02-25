@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   # filter to only what I use
-  resources :teams, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :teams, only: [:index, :show, :create, :edit, :update] do
     resources :comments, only: [:create, :destroy, :index]
   end
 end

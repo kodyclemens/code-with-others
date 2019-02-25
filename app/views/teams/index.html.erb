@@ -2,8 +2,23 @@
 <%= render partial: "layouts/flash_message" %>
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <div class="container mx-auto">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Start a New Team</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <%= render partial: "teams/form", locals: { user: @user, team: @team } %>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="text-center">
-  <h2><%= link_to 'Create a New Team', new_team_path %> <span class="badge badge-secondary"><i class="fas fa-plus"></i></span></h2>
+  <h2><a href="#" id="new_team_link">Create a New Team</a><span class="badge badge-secondary"><i class="fas fa-plus"></i></span></h2>
   </div>
   <div class="row">
     <% @teams.each do |t| %>

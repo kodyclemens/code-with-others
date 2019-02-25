@@ -30,6 +30,7 @@ class Comment {
     <hr>`;
 
     $('#comments').prepend(input);
+    $('#comment_content').val('');
   }
 }
 
@@ -40,7 +41,7 @@ $(document).ready(function() {
     e.preventDefault();
     const params = $(this).serialize();
     const posting = $.post('/teams/1/comments', params);
-    
+
     posting.done((data) => {
       let comment = new Comment(data.content, data.user.username,
         data.user.avatar_url, data.user.id, data.team.creator_id);
