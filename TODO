@@ -9,3 +9,4 @@ Todo List:
   ✔ Refactor controllers - DRY code up @started(19-01-31 19:38) @done(19-02-05 22:23) @lasted(5d2h45m12s)
   ☐ Fix "created x days ago" bug that is showing every team as being created today
   ☐ Fix tests to work with JavaScript interactions
+  ☐ Render team show page and associated comments through JS

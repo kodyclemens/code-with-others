@@ -31,11 +31,11 @@ $(document).ready(function() {
     for (let i in data) {
       let user = new User(data[i].id, data[i].username, data[i].avatar_url, data[i].account_type);
       user.updateDOM();
-      deleteListener(user.username);
+      deleteUserRow(user.username);
     }
   });
 
-  function deleteListener(username) {
+  function deleteUserRow(username) {
     $('.admin-delete-btn').on('click', function(e) {
       e.preventDefault();
       let id = e.target.id.split('-')[1];

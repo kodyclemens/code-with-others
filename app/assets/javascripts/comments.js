@@ -46,7 +46,6 @@ $(document).ready(function() {
       let comment = new Comment(data.content, data.user.username,
         data.user.avatar_url, data.user.id, data.team.creator_id);
         comment.updateDOM();
-        console.log(data);
     });
   });
 });

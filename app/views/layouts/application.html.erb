@@ -14,6 +14,8 @@
       <%= javascript_include_tag params[:controller] %>
     <% elsif params[:controller] == 'teams' && params[:action] == 'show' %>
       <%= javascript_include_tag 'comments' %>
+    <% elsif params[:controller] == 'users' && params[:action] == 'show' %>
+      <%= javascript_include_tag 'user' %>
     <% end %>
   </head>
 

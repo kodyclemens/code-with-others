@@ -46,6 +46,10 @@ class UsersController < ApplicationController
   def show
     if User.exists?(params[:id])
       @user = User.find(params[:id])
+      respond_to do |f|
+        f.html { render :show }
+        f.json { render json: @user, status: 200 }
+      end
     else
       redirect_to root_path
     end
