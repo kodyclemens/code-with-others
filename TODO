@@ -7,6 +7,6 @@ Todo List:
   ✔ Continuous integration service to automate testing before deployment (Travis CI) @done(19-01-27 21:11)
   ✔ Change auto deploys to wait until tests pass @done(19-01-27 21:25)
   ✔ Refactor controllers - DRY code up @started(19-01-31 19:38) @done(19-02-05 22:23) @lasted(5d2h45m12s)
+  ✔ Render team show page and associated comments through JS @done(19-03-04 14:42)
   ☐ Fix "created x days ago" bug that is showing every team as being created today
   ☐ Fix tests to work with JavaScript interactions
-  ☐ Render team show page and associated comments through JS
