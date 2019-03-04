@@ -40,7 +40,8 @@ $(document).ready(function() {
   form.on('submit', function(e) {
     e.preventDefault();
     const params = $(this).serialize();
-    const posting = $.post('/teams/1/comments', params);
+    const teamID = parseInt(document.URL.split('/')[4]);
+    const posting = $.post(`/teams/${teamID}/comments`, params);
 
     posting.done((data) => {
       let comment = new Comment(data.content, data.user.username,

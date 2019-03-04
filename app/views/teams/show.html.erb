@@ -3,8 +3,8 @@
 <%= render partial: "layouts/object_errors", locals: { object: @user } %>
 <div class="container">
 	<h2><%= @team.name %></h2>
-	<img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 8%; height: auto;">
-	<p><%= @team.repo_url %></p>
+	<img src="<%= @team.avatar_url %>" alt="Team Logo" class="img-fluid" style="max-width: 20%; height: auto;">
+	<p><a href="<%= @team.repo_url %>"><i class="fab fa-github-square" style="font-size: 30px;"></i></a></p>
 	<h4>Technologies used on this team:</h4>
 	<p><%= link_to 'Add a technology', team_technologies_path %></p>
 	<ul>

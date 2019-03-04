@@ -24,7 +24,7 @@ class User {
       let desc = this.teams[i]["description"];
       let goals = this.teams[i]["goals"];
       let slack = this.teams[i]["communication_method"];
-      HTML.push(`<a href="/teams/${id}"><h1>${name}</h1></a><img src="${avatar}"><h3>${desc}</h3><h3>${goals}</h3><h3>${slack}</h3>`);
+      HTML.push(`<a href="/teams/${id}"><h1>${name}</h1></a><img src="${avatar}"><h3>Description: ${desc}</h3><h3>Goals: ${goals}</h3><h3>Slack: ${slack}</h3>`);
     }
     return HTML;
   }
