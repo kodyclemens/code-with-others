@@ -1,5 +1,5 @@
 class Team {
-  constructor(id, title, desc, goals, slack, image, created) {
+  constructor(id, title, desc, goals, slack, image, created, github) {
     this.id = id;
     this.title = title;
     this.desc = desc;
@@ -7,10 +7,7 @@ class Team {
     this.slack = slack;
     this.image = image;
     this.created = created;
-  }
-
-  makeLink() {
-    return `<a href="/teams/${this.id}" class="btn btn-primary">View Team</a>`;
+    this.github = github;
   }
 
   ageMessage() {
@@ -35,15 +32,16 @@ $(document).ready(function(){
       const slack = data[i].communication_method;
       const image = data[i].avatar_url;
       const created_at = data[i].created_at;
-
-      const team = new Team(id, title, desc, goals, slack, image, created_at);
+      const github = data[i].repo_url;
+      const team = new Team(id, title, desc, goals, slack, image, created_at, github);
 
       $('#title-' + id).text(team.title);
       $('#desc-' + id).text(team.desc);
-      $('#goals-' + id).text(team.goals);
-      $('#slack-' + id).text(team.slack);
+      $('#goals-' + id).text(`Goals: ${team.goals}`);
+      $('#slack-' + id).attr('href', team.slack);
+      $('#github-' + id).attr('href', team.github);
+      $('#team-' + id).attr('href', `/teams/${team.id}`);
       $('#image-' + id).attr('src', team.image);
-      $('#button-' + id).append(team.makeLink());
 
       for (let x in data[i].users) {
         if (data[i].users[x].id === data[i].creator_id) {

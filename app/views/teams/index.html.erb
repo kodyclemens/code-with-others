@@ -18,23 +18,32 @@
   </div>
 </div>
 <div class="text-center">
-  <h2><a href="#" id="new_team_link">Create a New Team</a><span class="badge badge-secondary"><i class="fas fa-plus"></i></span></h2>
-  </div>
-  <div class="row">
-    <% @teams.each do |t| %>
-      <div class="col-lg-3">
-        <div class="card" style="width: 18rem;">
-          <img src="#" id="image-<%=t.id%>" class="card-img-top" alt="...">
-          <figcaption class="figure-caption text-center" id="creator-<%=t.id%>"></figcaption>
-          <div class="card-body">
-            <h5 class="card-title" id="title-<%=t.id%>"></h5>
-            <p class="card-text" id="desc-<%=t.id%>"></p>
-            <p class="card-text" id="goals-<%=t.id%>"></p>
-            <p class="card-text" id="slack-<%=t.id%>"></p>
-            <p id="button-<%=t.id%>"></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <h2><a href="#" id="new_team_link">Create a New Team</a></h2>
 </div>
+
+<div class="container">
+		<div class="row">
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+				<ul class="event-list">
+        <% @teams.each do |t| %>
+					<li>
+						<img alt="Team Image" id="image-<%=t.id%>" src="" />
+						<div class="info">
+							<h2 class="title" id="title-<%=t.id%>"></h2>
+							<p class="desc" id="desc-<%=t.id%>"></p>
+							<p class="desc" id="goals-<%=t.id%>"></p>
+              <p class="created" id="creator-<%=t.id%>"></p>
+						</div>
+            <div class="social">
+							<ul>
+								<li class="github" style="width:33%;"><a href="#github" id="github-<%=t.id%>"><span class="fa fa-github"></span></a></li>
+								<li class="slack" style="width:34%;"><a href="#slack" id="slack-<%=t.id%>"><span class="fa fa-slack"></span></a></li>
+								<li class="view-team" style="width:33%;"><a href="#team-page" id="team-<%=t.id%>"><span class="fa fa-eye"></span></a></li>
+							</ul>
+						</div>
+					</li>
+        <% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
