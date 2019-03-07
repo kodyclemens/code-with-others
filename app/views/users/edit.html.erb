@@ -29,7 +29,9 @@
 			<%= f.text_field :avatar_url, class: "form-control" %>
 			<br>
 			<%= f.submit 'Update Profile', class: 'btn btn-primary' %>
-			<%= button_to "Delete Account", user_path(@account.id), :method => :delete, :class => "btn btn-danger" %>
 		</div>
 	</div>
 <% end %>
+<div class="text-center">
+	<%= link_to (fa_icon "trash-o"), user_path(@account.id), :method => :delete, :class => "btn btn-danger", data: {confirm: 'Are you sure you want to delete your account?'} %>
+</div>

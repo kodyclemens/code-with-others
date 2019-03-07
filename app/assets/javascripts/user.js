@@ -10,7 +10,7 @@ class User {
   buildHTML() {
     return `
     <img src="${this.image}">
-    <h1>${this.username}</h1>
+    <h1>${this.username} <a href="/users/${this.id}/edit"><i class="fas fa-user-edit"></i></a></h1>
     <h3>Account Type: ${this.accountType}</h3>
     `;
   }
