@@ -38,17 +38,20 @@ $(document).ready(function() {
   function deleteUserRow(username) {
     $('.admin-delete-btn').on('click', function(e) {
       e.preventDefault();
+
       let id = e.target.id.split('-')[1];
       let post = { id: parseInt(e.target.id.split('-')[1]), ref: 'admin' };
       let auth = $('meta[name=csrf-token]').attr('content');
+
+      if (confirm(`Delete ${username}'s account?`)) {
+        $.ajax({
+            type: 'DELETE',
+            url: `/users/${id}?&authenticity_token=${auth}`,
+            data: post
+          });
       
-      $.ajax({
-          type: 'DELETE',
-          url: `/users/${id}?&authenticity_token=${auth}`,
-          data: post
-        });
-    
-      $(`#${username}`).remove();
+        $(`#${username}`).remove();
+      }    
     });
   }
 });
