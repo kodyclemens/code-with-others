@@ -9,9 +9,10 @@ class User {
 
   buildHTML() {
     return `
-    <img src="${this.image}">
+    <img src="${this.image}" class="user-profile-image">
     <h1>${this.username} <a href="/users/${this.id}/edit"><i class="fas fa-user-edit"></i></a></h1>
     <h3>Account Type: ${this.accountType}</h3>
+    <hr>
     `;
   }
 
@@ -24,7 +25,7 @@ class User {
       let desc = this.teams[i]["description"];
       let goals = this.teams[i]["goals"];
       let slack = this.teams[i]["communication_method"];
-      HTML.push(`<a href="/teams/${id}"><h1>${name}</h1></a><img src="${avatar}"><h3>Description: ${desc}</h3><h3>Goals: ${goals}</h3><h3>Slack: ${slack}</h3>`);
+      HTML.push(`<div class="user-page"><a href="/teams/${id}"><h1>${name}</h1></a><img src="${avatar}"><h3>Description: ${desc}</h3><h3>Goals: ${goals}</h3><h3>Slack: ${slack}</h3></div>`);
     }
     return HTML;
   }
