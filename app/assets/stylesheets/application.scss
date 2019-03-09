@@ -331,5 +331,15 @@ $primary: #5f27cd;
   .user-profile-image {
     width: 20%;
     height: auto;
+    outline: none;
+    border-color: #aeb0b1;
+    box-shadow: 0 0 10px #7c7c7c;
+    margin-top: 5px;
+  }
+
+  .team-mouseover {
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
   }
 }

@@ -35,18 +35,28 @@ class User {
   }
 }
 
+function userHover() {
+  $('#show-user div').hover(function() {
+    $(this).addClass('team-mouseover');
+  }, function() {
+    $(this).removeClass('team-mouseover');
+  });
+}
+
 $(document).ready(function () {
   const userID = parseInt(document.URL.split('/')[4]);
-
+  
   $.get(`/users/${userID}.json`, (data) => {
     const id = data['id'];
     const username = data['username'];
     const avatar = data['avatar_url'];
     const acctType = data['account_type'];
     const teams = data['teams'];
-
+    
     let user = new User(id, username, avatar, acctType, teams);
     user.updateDOM(user.buildHTML());
     user.updateDOM(user.buildTeamsHTML());
+    userHover();
   });
+  
 });
