@@ -13,9 +13,9 @@ class User < ApplicationRecord
 
   def self.find_or_create_by_uid(auth)
     @user = find_by(github_uid: auth[:uid])
-    puts auth.inspect
+
     if @user.nil?
-      @user = User.create!(github_uid: auth[:uid], username: auth[:info][:nickname],
+      @user = User.create(github_uid: auth[:uid], username: auth[:info][:nickname],
                           email: auth[:info][:email], avatar_url: auth[:info][:image],
                           github_profile_url: auth[:info][:urls][:GitHub], password: SecureRandom.hex,
                           bio: auth[:extra][:raw_info][:bio], company: auth[:extra][:raw_info][:company])
