@@ -47,6 +47,7 @@ class User {
 function userHover() {
   $('#show-user div.team').hover(function() {
     $(this).addClass('team-mouseover');
+    console.log(this);
   }, function() {
     $(this).removeClass('team-mouseover');
   });
@@ -54,8 +55,12 @@ function userHover() {
 
 $(document).ready(function () {
   const userID = parseInt(document.URL.split('/')[4]);
-  
-  $.get(`/users/${userID}.json`, (data) => {
+
+  fetch(`/users/${userID}.json`)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
     const id = data['id'];
     const username = data['username'];
     const avatar = data['avatar_url'];
@@ -63,9 +68,20 @@ $(document).ready(function () {
     const teams = data['teams'];
     
     let user = new User(id, username, avatar, acctType, teams);
-    user.updateDOM(user.buildHTML());
-    user.updateDOM(user.buildTeamsHTML());
+    user.updateDOM(user.buildHTML() + user.buildTeamsHTML());
     userHover();
   });
+  
+  // $.get(`/users/${userID}.json`, (data) => {
+  //   const id = data['id'];
+  //   const username = data['username'];
+  //   const avatar = data['avatar_url'];
+  //   const acctType = data['account_type'];
+  //   const teams = data['teams'];
+    
+  //   let user = new User(id, username, avatar, acctType, teams);
+  //   user.updateDOM(user.buildHTML() + user.buildTeamsHTML());
+  //   userHover();
+  // });
   
 });

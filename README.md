@@ -12,6 +12,10 @@ Code With Others is a web application that allows developers to create or join c
 
 Start using the application by registering an account at https://www.codewithothers.com
 
+## Local Development
+
+Instuctions here
+
 ## Built With
 
 * [Ruby on Rails](https://rubyonrails.org/)
